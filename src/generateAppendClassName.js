@@ -2,7 +2,7 @@ import Map from 'es6-map';
 
 const stylesIndex = new Map();
 
-export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean): string => {
+export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean, theme:string = ""): string => {
     let appendClassName,
         stylesIndexMap;
 
@@ -22,10 +22,14 @@ export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean): 
 
     for (const styleName in styleNames) {
         if (styleNames.hasOwnProperty(styleName)) {
-            const className = styles[styleNames[styleName]];
+            const baseClassName = styles[styleNames[styleName]];
+            const themeClassName = styles[styleNames[`${theme}_${styleName}`]];
 
-            if (className) {
-                appendClassName += ' ' + className;
+            if (themeClassName) {
+                appendClassName += ' ' + themeClassName;
+            }
+            else if(baseClassName) {
+                appendClassName += ' ' + baseClassName;
             } else if (errorWhenNotFound === true) {
                 throw new Error('"' + styleNames[styleName] + '" CSS module is undefined.');
             }
