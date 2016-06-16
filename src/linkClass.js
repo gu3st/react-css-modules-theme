@@ -8,7 +8,7 @@ import parseStyleName from './parseStyleName';
 import generateAppendClassName from './generateAppendClassName';
 import objectUnfreeze from 'object-unfreeze';
 
-const linkElement = (element: ReactElement, styles: Object, configuration: Object): ReactElement => {
+const linkElement = (element: ReactElement, styles: Object, configuration: Object, theme: String = ""): ReactElement => {
     let appendClassName,
         elementIsFrozen,
         elementShallowCopy;
@@ -38,7 +38,7 @@ const linkElement = (element: ReactElement, styles: Object, configuration: Objec
     }
 
     if (styleNames.length) {
-        appendClassName = generateAppendClassName(styles, styleNames, configuration.errorWhenNotFound, elementShallowCopy.props.theme);
+        appendClassName = generateAppendClassName(styles, styleNames, configuration.errorWhenNotFound, theme);
 
         if (appendClassName) {
             if (elementShallowCopy.props.className) {

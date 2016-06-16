@@ -29,7 +29,7 @@ export default (Component: Function, defaultStyles: Object, options: Object): Fu
         const renderResult = Component(useProps, ...args);
 
         if (renderResult) {
-            return linkClass(renderResult, styles, options);
+            return linkClass(renderResult, styles, options, props.theme);
         }
 
         return React.createElement('noscript');

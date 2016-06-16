@@ -39,7 +39,7 @@ export default (Component: Object, defaultStyles: Object, options: Object) => {
             }
 
             if (renderResult) {
-                return linkClass(renderResult, styles, options);
+                return linkClass(renderResult, styles, options, this.props.theme);
             }
 
             return React.createElement('noscript');

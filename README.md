@@ -1,10 +1,13 @@
 # React CSS Modules
 
-[![Travis build status](http://img.shields.io/travis/gajus/react-css-modules/master.svg?style=flat-square)](https://travis-ci.org/gajus/react-css-modules)
-[![NPM version](http://img.shields.io/npm/v/react-css-modules.svg?style=flat-square)](https://www.npmjs.org/package/react-css-modules)
+[![Travis build status](https://travis-ci.org/HypercolorPanda/react-css-modules-theme.svg?branch=master?style=flat-square)](https://travis-ci.org/HypercolorPanda/react-css-modules)
+[![NPM version](http://img.shields.io/npm/v/react-css-modules-theme.svg?style=flat-square)](https://www.npmjs.org/package/react-css-modules-theme)
 [![js-canonical-style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 
-<img src='./.README/react-css-modules.png' height='150' />
+# README IS OUT OF DATE.  THIS HAS BEEN FORKED TO SUPPORT THEMING.
+
+SHORT STORY IS, YOUR COMPONENT RECEIVES A THEME AS PART OF PROPS, AND THEN ATTEPTS TO PREPEND IT TO THE STYLENAME, IF THAT DOESN'T EXIST, IT FALLS BACK TO STYLENAME
+
 
 React CSS Modules implement automatic mapping of CSS modules. Every CSS class is assigned a local-scoped identifier with a global unique name. CSS Modules enable a modular and reusable CSS!
 
