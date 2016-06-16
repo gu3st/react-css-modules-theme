@@ -1,12 +1,15 @@
 import Map from 'es6-map';
 
-const stylesIndex = new Map();
+const stylesIndex = [];
 
 export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean, theme:string = ""): string => {
     let appendClassName,
         stylesIndexMap;
+    if(!stylesIndex[theme]){
+        stylesIndex[theme] = new Map();
+    }
 
-    stylesIndexMap = stylesIndex.get(styles);
+    stylesIndexMap = stylesIndex[theme].get(styles);
 
     if (stylesIndexMap) {
         const styleNameIndex = stylesIndexMap.get(styleNames);
@@ -15,7 +18,7 @@ export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean, t
             return styleNameIndex;
         }
     } else {
-        stylesIndexMap = stylesIndex.set(styles, new Map());
+        stylesIndexMap = stylesIndex[theme].set(styles, new Map());
     }
 
     appendClassName = '';
@@ -23,7 +26,7 @@ export default (styles, styleNames: Array<string>, errorWhenNotFound: boolean, t
     for (const styleName in styleNames) {
         if (styleNames.hasOwnProperty(styleName)) {
             const baseClassName = styles[styleNames[styleName]];
-            const themeClassName = styles[styleNames[`${theme}_${styleName}`]];
+            const themeClassName = styles[`${theme}_${styleNames[styleName]}`];
 
             if (themeClassName) {
                 appendClassName += ' ' + themeClassName;

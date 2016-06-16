@@ -26,11 +26,11 @@ const linkElement = (element: ReactElement, styles: Object, configuration: Objec
     const styleNames = parseStyleName(elementShallowCopy.props.styleName || '', configuration.allowMultiple);
 
     if (React.isValidElement(elementShallowCopy.props.children)) {
-        elementShallowCopy.props.children = linkElement(React.Children.only(elementShallowCopy.props.children), styles, configuration);
+        elementShallowCopy.props.children = linkElement(React.Children.only(elementShallowCopy.props.children), styles, configuration,theme);
     } else if (_.isArray(elementShallowCopy.props.children) || isIterable(elementShallowCopy.props.children)) {
         elementShallowCopy.props.children = React.Children.map(elementShallowCopy.props.children, (node) => {
             if (React.isValidElement(node)) {
-                return linkElement(node, styles, configuration);
+                return linkElement(node, styles, configuration, theme);
             } else {
                 return node;
             }
@@ -62,8 +62,9 @@ const linkElement = (element: ReactElement, styles: Object, configuration: Objec
  * @param {ReactElement} element
  * @param {Object} styles CSS modules class map.
  * @param {CSSModules~Options} userConfiguration
+ * @param {String} theme Theme
  */
-export default (element: ReactElement, styles = {}, userConfiguration): ReactElement => {
+export default (element: ReactElement, styles = {}, userConfiguration, theme: String = ""): ReactElement => {
     // @see https://github.com/gajus/react-css-modules/pull/30
     if (!_.isObject(element)) {
         return element;
@@ -71,5 +72,5 @@ export default (element: ReactElement, styles = {}, userConfiguration): ReactEle
 
     const configuration = makeConfiguration(userConfiguration);
 
-    return linkElement(element, styles, configuration);
+    return linkElement(element, styles, configuration,theme);
 };
