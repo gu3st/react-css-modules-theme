@@ -4,7 +4,7 @@
   "main": "./dist/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HypercolorPanda/react-css-modules-theme"
+    "url": "https://github.com/gu3st/react-css-modules-theme"
   },
   "keywords": [
     "react-component",
@@ -13,7 +13,7 @@
     "css",
     "modules"
   ],
-  "version": "3.8.5",
+  "version": "3.8.6",
   "author": {
     "name": "Dustin Dawes",
     "email": "gu3st@dustindawes.com",

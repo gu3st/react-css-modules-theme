@@ -39,11 +39,15 @@ export default (Component: Object, defaultStyles: Object, options: Object) => {
             }
 
             if (renderResult) {
-                return linkClass(renderResult, styles, options, this.props.theme);
+                return linkClass(renderResult, styles, options, this.context.theme);
             }
 
             return React.createElement('noscript');
         }
+    };
+
+    WrappedComponent.contextTypes = {
+        theme: React.PropTypes.string
     };
 
     return hoistNonReactStatics(WrappedComponent, Component);
